@@ -5,13 +5,14 @@
 }
 
 header {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   padding-left: 1em;
   padding-right: 1em;
   border-left: solid 1px;
   border-right: solid 1px;
   min-width: 580px;
+  min-height: 240px;
 }
 
 nav {
@@ -48,4 +49,42 @@ nav a {
 .intro p {
   padding-bottom: 0.1em;
   font-size: 1.2em;
+}
+
+.thumbs {
+  display: grid;
+}
+
+.thumbs-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.post-thumb {
+  border: solid 1px;
+  margin: 1em;
+  position: relative;
+  background: -webkit-linear-gradient(black 0,#666 60%,black);
+}
+
+.post-thumb img {
+  width: 100%;
+  visibility: hidden;
+}
+
+.post-thumb div.post-title, div.post-summary {
+  color: white;
+  padding: 0 0.3em 0 0.3em;
+}
+
+.post-thumb div.post-title {
+  position: absolute;
+  font-weight: bold;
+  top: 5%;
+}
+
+.post-thumb div.post-summary {
+  position: absolute;
+  bottom: 10%;
+  text-align: right;
 }
