@@ -1,90 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Zilla+Slab:300');
-
-* {
-  font-family: 'Zilla Slab', serif;
+.container-fluid {
+  padding: 0;
 }
 
-header {
-  margin-left: 5%;
-  margin-right: 5%;
-  padding-left: 1em;
-  padding-right: 1em;
-  border-left: solid 1px;
-  border-right: solid 1px;
-  min-width: 580px;
-  min-height: 240px;
+@media (min-width: 768px) {
+.navbar-right {
+  margin-right: 1vw;
+}
 }
 
-nav {
-  border-bottom: solid 1px;
-  /*position: relative;
-  left: 200px;*/
-  margin-left: 220px;
-  display: flex;
-  justify-content: space-around;
-}
-
-nav a {
-  text-transform: capitalize;
-  text-align: center;
-  font-size: 1.6em;
-  padding: 0.3em;
-  margin-left: 0px;
-}
-
-#profile-picture img {
-  width: 200px;
-  height: 200px;
-  float: left;
-  margin-right: 1em;
-  margin-top: 1em;
-  background: #ffccff;
-}
-
-.intro > div.separator {
-  margin-left: 220px;
-  border-top: solid 1px;
-}
-
-.intro p {
-  padding-bottom: 0.1em;
-  font-size: 1.2em;
-}
-
-.thumbs {
-  display: grid;
-}
-
-.thumbs-row {
-  display: flex;
-  justify-content: space-around;
-}
-
-.post-thumb {
-  border: solid 1px;
-  margin: 1em;
-  position: relative;
-  background: -webkit-linear-gradient(black 0,#666 60%,black);
-}
-
-.post-thumb img {
-  width: 100%;
-  visibility: hidden;
-}
-
-.post-thumb div.post-title, div.post-summary {
-  color: white;
-  padding: 0 0.3em 0 0.3em;
-}
-
-.post-thumb div.post-title {
-  position: absolute;
-  font-weight: bold;
-  top: 5%;
-}
-
-.post-thumb div.post-summary {
-  position: absolute;
-  bottom: 10%;
-  text-align: right;
+.custom-thumbnail {
+  height: 25vh;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 3em;
+  border-radius: 0.3em;
 }
