@@ -1,6 +1,6 @@
-/* thumbs.js
+/* bs_random_thumbs.js
 
-ello.co thumbs patterns with bootstrap
+random thumbs patterns with bootstrap
 
 Author : free.malikbenkirane@gmail.com
 Licence : GPL v3.0
@@ -59,7 +59,7 @@ function dad_random_patterns(n, pattern_config) {
   return buffer;
 }
 
-function unique_random_colors(n, colors_palette) {
+function random_colors(n, colors_palette) {
   var nc = color_palette.length;
   var colors = [random_color(colors_palette)];
   var buffer = [colors[0]];
@@ -78,6 +78,31 @@ function unique_random_colors(n, colors_palette) {
   return buffer;
 }
 
+function random_colors_kernel(n, k, colors_palette) {
+  if ( k > colors_palette.length ) {
+    console.log('no kernel ! calling colors palette');
+    var colors = random_colors(n, colors_palette);
+      return random_colors(n, colors_palette);
+  }
+  var kernel = random_colors(k, colors_palette);
+  var buffer = kernel;
+  while ( buffer.length < n ) {
+    console.log('(' + buffer.length + ')', kernel);
+    var try_color = random_color(colors_palette);
+    while ( kernel.indexOf(try_color) >= 0 ) {
+      try_color = random_color(colors_palette)
+    }
+    var kernel_translation = [];
+    for ( var i = 1 ; i < k ; i++ ) {
+      kernel_translation[i-1] = kernel[i];
+    }
+    kernel = kernel_translation.concat([try_color]);
+    console.log(kernel);
+    buffer[buffer.length] = try_color;
+  }
+  return buffer;
+}
+
 function thumbnail(parent_div, color) {
   var thumb = document.createElement('DIV');
   thumb.style.backgroundColor = color;
@@ -91,7 +116,8 @@ function inject_patterns(n, parent, patterns_config, colors_palette) {
   for ( var i = 0 ; i < n ; i++ ) {
     s += patterns[i].length;
   }
-  var colors = unique_random_colors(s+1, colors_palette);
+  //var colors = random_colors(s+1, colors_palette);
+  var colors = random_colors_kernel(s+1, colors_palette.length - 1, colors_palette);
   console.log('patterns', patterns);
   console.log('colors', colors);
   var cum = 0;
@@ -100,7 +126,7 @@ function inject_patterns(n, parent, patterns_config, colors_palette) {
     for ( var col = 0 ; col < pattern.length ; col++ ) {
       var element = document.createElement("DIV");
       element.className = pattern[col];
-      console.log('cum '+cum, colors[cum]);
+      //console.log('cum '+cum, colors[cum]);
       thumbnail(element, colors[++cum]);
       parent.appendChild(element);
     }
